@@ -4,7 +4,7 @@ $fileaction="r";
 
 $file = fopen($filename,$fileaction);
 
-var_dump($_POST);
+// var_dump($_POST);
 
 /* The intended behavior is for the print functions to only print the lines that contain a matching classcode
 which can be any combination of numbers and letters, but right now it's just A3 and A4
@@ -13,6 +13,9 @@ but if I enter A3 it should print all lines containing A3, and NOT any other lin
 
 while ( $linefromfile = fgets($file))
 {
+$linefromfile = explode(";", $linefromfile);
+
+var_dump($linefromfile);
 
 $linefromfile = trim($linefromfile);
 if (empty($linefromfile)) {continue; }
@@ -23,9 +26,6 @@ if ($_POST['classcode_input'] != $linefromfile[3]) {
 continue;
 }
 }
-$linefromfile = explode(";", $linefromfile);
-
-var_dump($_POST);
   print ("First name is $linefromfile[0]. ");
   print ("Last name is $linefromfile[1]. ");
   print ("Username is $linefromfile[2]. ");
@@ -34,5 +34,12 @@ var_dump($_POST);
 }
 fclose($file);
 
-// current output is: array(2) { ["classcode_input"]=> string(2) "A3" ["continue"]=> string(8) "Continue" }
+/* current output is: array(4) { [0]=> string(6) "Mangla" [1]=> string(5) "Surma" [2]=> string(5) "Bngli" [3]=> string(4) "A3 " } 
+Warning: trim() expects parameter 1 to be string, array given in C:\xampp\htdocs\Oblig1\test.php on line 20
+array(4) { [0]=> string(7) "Testone" [1]=> string(7) "Lastone" [2]=> string(2) "tl" [3]=> string(4) "A4 " } 
+Warning: trim() expects parameter 1 to be string, array given in C:\xampp\htdocs\Oblig1\test.php on line 20
+array(4) { [0]=> string(4) "Link" [1]=> string(7) "Surname" [2]=> string(2) "ls" [3]=> string(4) "A3 " } 
+Warning: trim() expects parameter 1 to be string, array given in C:\xampp\htdocs\Oblig1\test.php on line 20
+
+*/
 ?>
