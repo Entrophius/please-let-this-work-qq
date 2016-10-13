@@ -23,7 +23,9 @@ if ($_POST['classcode_input'] != $linefromfile[3]) {
 continue;
 }
 }
+$linefromfile = explode(";", $linefromfile);
 
+var_dump($_POST);
   print ("First name is $linefromfile[0]. ");
   print ("Last name is $linefromfile[1]. ");
   print ("Username is $linefromfile[2]. ");
@@ -31,4 +33,6 @@ continue;
   print ("<br>");
 }
 fclose($file);
+
+// current output is: array(2) { ["classcode_input"]=> string(2) "A3" ["continue"]=> string(8) "Continue" }
 ?>
