@@ -13,11 +13,13 @@ but if I enter A3 it should print all lines containing A3, and NOT any other lin
 
 while ( $linefromfile = fgets($file))
 {
+
+$linefromfile = trim($linefromfile);
+
 $linefromfile = explode(";", $linefromfile);
 
 var_dump($linefromfile);
 
-$linefromfile = trim($linefromfile);
 if (empty($linefromfile)) {continue; }
 // classcode_input is the id of the input text field from the html page
 
@@ -34,12 +36,8 @@ continue;
 }
 fclose($file);
 
-/* current output is: array(4) { [0]=> string(6) "Mangla" [1]=> string(5) "Surma" [2]=> string(5) "Bngli" [3]=> string(4) "A3 " } 
-Warning: trim() expects parameter 1 to be string, array given in C:\xampp\htdocs\Oblig1\test.php on line 20
-array(4) { [0]=> string(7) "Testone" [1]=> string(7) "Lastone" [2]=> string(2) "tl" [3]=> string(4) "A4 " } 
-Warning: trim() expects parameter 1 to be string, array given in C:\xampp\htdocs\Oblig1\test.php on line 20
-array(4) { [0]=> string(4) "Link" [1]=> string(7) "Surname" [2]=> string(2) "ls" [3]=> string(4) "A3 " } 
-Warning: trim() expects parameter 1 to be string, array given in C:\xampp\htdocs\Oblig1\test.php on line 20
+/* current output is: array(4) { [0]=> string(6) "Mangla" [1]=> string(5) "Surma" [2]=> string(5) "Bngli" [3]=> string(2) "A3" } First name is Mangla. Last name is Surma. Username is Bngli. Classcode is A3
+array(4) { [0]=> string(7) "Testone" [1]=> string(7) "Lastone" [2]=> string(2) "tl" [3]=> string(2) "A4" } array(4) { [0]=> string(4) "Link" [1]=> string(7) "Surname" [2]=> string(2) "ls" [3]=> string(2) "A3" } First name is Link. Last name is Surname. Username is ls. Classcode is A3
 
 */
 ?>
