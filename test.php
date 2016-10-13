@@ -9,7 +9,7 @@ var_dump($_POST);
 /* The intended behavior is for the print functions to only print the lines that contain a matching classcode
 which can be any combination of numbers and letters, but right now it's just A3 and A4
 example: if I enter "A1" in the input field on the html page it should return a message saying "No matches found"
-but if I enter A3 it should print all lines containing A3. It will always be on the same place on each line, last. */
+but if I enter A3 it should print all lines containing A3, and NOT any other lines. It will always be on the same place on each line, last. */
 
 while ( $linefromfile = fgets($file))
 {
