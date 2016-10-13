@@ -1,32 +1,28 @@
 <?php
-// fra formen
+// validering, altså dvs, sjekk om det er noe i feltet
 if ($_SERVER["REQUEST_METHOD"] != "POST") { return;}
 if (empty($_POST["classcode_input"])) {print "Nope"; return;}
 
+// en rekke med variabler
 $filename="student.txt";
 $fileaction="r";
-$matchcount =0;
-
 $file = fopen($filename,$fileaction);
+$matchcount =0;
+$classcode = $_POST["classcode_input"];
 
 while ( $linefromfile = fgets($file))
 {
+
+// trim
 $linefromfile = trim($linefromfile);
-/*
-if (empty($linefromfile)) 
-{
-  continue;
-}
-*/
 
+// explode linjene fra filen til array, ; som delimiter/skilletegn/breaktegn 
 $linefromfile = explode(";", $linefromfile);
-// classcode_input is the id of the input text field from the html page
 
-//if (!empty($_POST['classcode_input'])) {
-if ($_POST['classcode_input'] != $linefromfile[3]) {
+if ($classcode != $linefromfile[3]) {
 continue;
 }
-//}
+
   $matchcount++;
   print ("First name is $linefromfile[0]. ");
   print ("Last name is $linefromfile[1]. ");
