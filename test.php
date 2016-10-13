@@ -1,10 +1,7 @@
 <?php
 // fra formen
-if ($_SERVER["REQUEST_METHOD"] != "POST")
-if (empty($_POST["classcode_input"])) {print "Nope";}
-{
-  return;
-}
+if ($_SERVER["REQUEST_METHOD"] != "POST") { return;}
+if (empty($_POST["classcode_input"])) {print "Nope"; return;}
 
 $filename="student.txt";
 $fileaction="r";
