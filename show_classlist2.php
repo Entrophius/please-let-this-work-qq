@@ -17,7 +17,9 @@
         <input type="reset" value="Reset" name="reset" id="reset" class="enter" /> <br />
         <br /> <a href="ObligIndex.html">Tilbake til index</a>
     </form>
+    <p>
     <?php require "test.php";
     ?>
+    </p>
 </body>
 </html>
